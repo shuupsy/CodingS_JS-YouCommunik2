@@ -146,7 +146,6 @@ let evolution = new Links(["public/img/Logo-logo.png", "public/img/icon-charte-g
 let envol = new Links(["public/img/icon-analyse-flux-web.png", "public/img/icon-campagne-facebook.png", "public/img/icon-campagne-facebook.png", "public/img/icon-campagne-e-mailing.png", ""], ["Analyse du flux web", "Campagne Facebook", "Campagne Adwords", "Campagne e-mailing", ""])
 
 let link = [eclosion, evolution, envol]
-console.log(link[0]._links[3])
 let sectionsMain = document.querySelector("main").children // Toutes les sections de MAIN
 
 for (i = 2, a=0; i < 8; i += 2, a++) {
@@ -154,14 +153,13 @@ for (i = 2, a=0; i < 8; i += 2, a++) {
     sectionsMain[i].setAttribute("class", "text-center d-flex flex-wrap h-auto justify-content-evenly pt-2")
     sectionsMain[i].style.backgroundColor = "#EAE3D6"
     sectionsMain[i].style.height = "25vh"
-    for (d = 0; d < 5; d++) {
+    for (d = 0; d < 4; d++) {
         // Créer 5 div par section
-        console.log("d :" + d)
-        console.log("a :" + a)
         let div = new createHtml("div", "", "", sectionsMain[i])
-        let imgL = new createHtml("img", "", "", div._type)
+        let imgL = new createHtml("img", "style", "width: 85px", div._type)
         imgL.addAtr("src", `${link[a]._links[d]}`)
-        let p = new createHtml("p", "", "", div._type)
+        let p = new createHtml("p", "class", "px-5 px-md-0", div._type)
+        p.insertHtml(`${link[a]._titre[d]}`)
     }
 }
 
