@@ -74,8 +74,11 @@ sect1.setAttribute("class", "container-fluid text-light text-center text-lg-star
 sect1.style.backgroundColor = "#334D5C"
 sect1.style.height = "50vh"
 
-let div1_S1 = new createHtml("div", "class", "col-lg-4 text-center text-lg-end", sect1)
-let div2_S1 = new createHtml("div", "class", "col-lg-8 text-center text-lg-start", sect1)
+let div0 = new createHtml("div", "class", "row align-items-center justify-content-center", sect1)
+div0.addAtr("style", "height: 50vh")
+
+let div1_S1 = new createHtml("div", "class", "col-lg-4 text-center text-lg-end", div0._type)
+let div2_S1 = new createHtml("div", "class", "col-lg-8 text-center text-lg-start", div0._type)
 
 let img_S1 = new createHtml("img", "src", "public/img/packages.png", div1_S1._type)
 
@@ -105,6 +108,7 @@ let about = [section2, section4, section6]
 let sectionsMain = document.querySelector("main").children
 let s=0
 for (i=1; i < 8; i+=2){
+    sectionsMain[i].setAttribute("class", "my-5")
     let div0 = new createHtml("div", "class", "d-flex justify-content-center pb-4", sectionsMain[i])
 
     let h3 = new createHtml("h3", "", "", div0._type)
@@ -115,6 +119,7 @@ for (i=1; i < 8; i+=2){
 
     let div1 = new createHtml("div", "class", "col-lg-4 d-flex justify-content-evenly", div._type)
     let img = new createHtml("img", "src", `${about[s]._img}`, div1._type)
+    img.addAtr("style", "width: 200px")
 
     let div2 = new createHtml("div", "class", "col-lg-8 px-3", div._type)
     let p1 = new createHtml("p", "", "", div2._type)
