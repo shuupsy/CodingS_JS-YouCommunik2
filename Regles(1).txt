@@ -1,0 +1,6 @@
+refaire Youcommunik en js.
+
+Création des div par les fonctions et ou les classes.
+
+en gros j'ai pas envie de voir du code avec que des 
+variables let sur 1000 lignes de code.
