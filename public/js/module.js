@@ -75,7 +75,7 @@ for (let i = 0; i < 3; i++) {
     let img3F = new createHtml("img", "class", "imgF ", divF1._type)
 }
 let imgF = document.querySelectorAll(".imgF")
-imgF.forEach(i => {
+imgF.forEach(i => { // Changer la taille de toutes les images du FOOTER
     i.style.width = "60px"
 })
 
@@ -105,8 +105,8 @@ partie.forEach((p, index) => {
     d++
 })
 
-
-let ftr2 = new createHtml("div", "class", "d-flex justify-content-center justify-content-lg-end pb-3", footer._type) // Footer2
+// Footer 2 - CGV
+let ftr2 = new createHtml("div", "class", "d-flex justify-content-center justify-content-lg-end pb-3", footer._type)
 let pF2 = new createHtml("p", "", "", ftr2._type)
 pF2.insertHtml("C.G.V.")
 
@@ -134,6 +134,36 @@ h1_S1.insertHtml("A chaque étape son pack")
 let h2_S1 = new createHtml("h2", "class", "fw-normal", div2_S1._type)
 h2_S1.insertHtml("naître, grandir et prospérer.")
 
+// Section 3,5,7
+class Links {
+    constructor(_links, _titre) {
+        this._links = _links;
+        this._titre = _titre;
+    }
+}
+let eclosion = new Links(["public/img/Logo-logo.png", "public/img/icon-charte-graphic.png", "public/img/site-single-page.png", "public/img/carte-visite.png", ""], ["Logo", "Charte graphique", "Site single page", "Carte de visite", ""])
+let evolution = new Links(["public/img/Logo-logo.png", "public/img/icon-charte-graphic.png", "public/img/site-vitrine.png", "public/img/reseaux-sociaux.png", "public/img/carte-visite.png"], ["Logo", "Charte graphique", "Site vitrine", "Réseaux sociaux", "Carte de visite"])
+let envol = new Links(["public/img/icon-analyse-flux-web.png", "public/img/icon-campagne-facebook.png", "public/img/icon-campagne-facebook.png", "public/img/icon-campagne-e-mailing.png", ""], ["Analyse du flux web", "Campagne Facebook", "Campagne Adwords", "Campagne e-mailing", ""])
+
+let link = [eclosion, evolution, envol]
+console.log(link[0]._links[3])
+let sectionsMain = document.querySelector("main").children // Toutes les sections de MAIN
+
+for (i = 2, a=0; i < 8; i += 2, a++) {
+    // Pour chaque section (3,5,7)
+    sectionsMain[i].setAttribute("class", "text-center d-flex flex-wrap h-auto justify-content-evenly pt-2")
+    sectionsMain[i].style.backgroundColor = "#EAE3D6"
+    sectionsMain[i].style.height = "25vh"
+    for (d = 0; d < 5; d++) {
+        // Créer 5 div par section
+        console.log("d :" + d)
+        console.log("a :" + a)
+        let div = new createHtml("div", "", "", sectionsMain[i])
+        let imgL = new createHtml("img", "", "", div._type)
+        imgL.addAtr("src", `${link[a]._links[d]}`)
+        let p = new createHtml("p", "", "", div._type)
+    }
+}
 
 // Section 2, 4, 6
 class About {
@@ -149,7 +179,7 @@ let section4 = new About("Evolution", "public/img/icon-evolution.png", "Le pack 
 let section6 = new About("Envol", "public/img/icon-envole.png", "Le pack Envol est destiné à accroître votre visibilité, clientèle et notoriété, tout en diminuant vos coûts et en garantissant le meilleur retour sur investissement.", "Il comporte un servie d'analyse de votre cible et des flux de vote trafic internet, afin d'utiliser les paramètres les plus adéquats pour la diffusion de vos campagnes.")
 let about = [section2, section4, section6]
 
-let sectionsMain = document.querySelector("main").children // Toutes les sections de MAIN
+
 
 let s = 0
 for (i = 1; i < 8; i += 2) {
