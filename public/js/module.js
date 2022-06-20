@@ -10,7 +10,7 @@ class createHtml {
         this._type.innerHTML = _x
     }
     addAtr(_x, _y) {
-        this._type.setAttribute(_x,_y)
+        this._type.setAttribute(_x, _y)
     }
     delChild() {
         this._type.remove
@@ -19,13 +19,13 @@ class createHtml {
 
 let header = new createHtml("header", "class", "bg-black text-light text-center h-auto", document.body)
 let main = new createHtml("main", "", "", document.body)
-let footer = new createHtml("footer", "", "", document.body)
+let footer = new createHtml("footer", "class", "text-light container-fluid pt-5 px-5 text-center text-lg-start", document.body)
 
 // HEADER
 let nav = new createHtml("nav", "class", "d-lg-flex justify-content-between align-items-center", header._type)
 
 let imgLogo = new createHtml("img", "src", "public/img/logo-horizontal-fond-noir-couleur.png", nav._type)
-imgLogo.addAtr("class","pt-2 pt-lg-0 ps-2 mb-4 m-lg-0")
+imgLogo.addAtr("class", "pt-2 pt-lg-0 ps-2 mb-4 m-lg-0")
 
 // Menu avec logo
 let divH = new createHtml("div", "class", "d-md-flex justify-content-around fs-6 pb-2 pb-lg-0", nav._type)
@@ -63,6 +63,52 @@ pH.forEach((p, index) => {
 })
 
 
+// Footer
+footer.addAtr("style", "background-color : #393A3B")
+let ftr1 = new createHtml("div", "class", "row pb-5", footer._type) // Footer1
+for (let i = 0; i < 3; i++) {
+    let div = new createHtml("div", "class", "partie col-lg-4", ftr1._type)
+    let h4 = new createHtml("h4", "", "", div._type)
+    let divF1 = new createHtml("div", "class", "d-flex justify-content-center justify-content-lg-start mb-4 mb-lg-0", div._type)
+    let img1F = new createHtml("img", "class", "imgF pe-1", divF1._type)
+    let img2F = new createHtml("img", "class", "imgF pe-1", divF1._type)
+    let img3F = new createHtml("img", "class", "imgF ", divF1._type)
+}
+let imgF = document.querySelectorAll(".imgF")
+imgF.forEach(i => {
+    i.style.width = "60px"
+})
+
+class partFooter {
+    constructor(_titre, _img1, _img2, _img3) {
+        this._titre = _titre;
+        this._img1 = _img1;
+        this._img2 = _img2;
+        this._img3 = _img3;
+    }
+}
+let ftr1A = new partFooter("Packs", "public/img/icon-eclosion.png", "public/img/icon-evolution.png", "public/img/icon-envole.png")
+let ftr1B = new partFooter("Outils", "public/img/identite-graphique.png", "public/img/reseaux-sociaux.png", "public/img/print.png")
+let ftr1C = new partFooter("Social media", "public/img/social-f.png", "public/img/google-plus.png", "")
+let partsFooter = [ftr1A, ftr1B, ftr1C]
+
+let partie = document.querySelectorAll(".partie")
+let d = 0
+partie.forEach((p, index) => {
+    let h4 = p.firstChild
+    h4.innerHTML = `${partsFooter[index]._titre}`
+
+    let divF = p.lastChild.children
+    divF[0].setAttribute("src", `${partsFooter[d]._img1}`)
+    divF[1].setAttribute("src", `${partsFooter[d]._img2}`)
+    divF[2].setAttribute("src", `${partsFooter[d]._img3}`)
+    d++
+})
+
+
+let ftr2 = new createHtml("div", "class", "d-flex justify-content-center justify-content-lg-end pb-3", footer._type) // Footer2
+let pF2 = new createHtml("p", "", "", ftr2._type)
+pF2.insertHtml("C.G.V.")
 
 // MAIN
 for (let i = 0; i < 7; i++) {
@@ -98,16 +144,15 @@ class About {
         this._text2 = _text2;
     }
 }
-
-let section2 = new About ("Eclosion", "public/img/icon-eclosion.png", "Le pack Eclosion est parfait pour le début d'une activité.", "Il comprend la création de votre identité graphique, incluant votre logo et un support de prospection pour aller à la rencontre vos futurs clients, ainsi qu'un site internet single page pour avoir uneprésence en ligne.")
-let section4 = new About ("Evolution", "public/img/icon-evolution.png", "Le pack Evolution vous propose une identité visuelle complète, comprenant la création de votre logo, de la charte graphique et de votre carte de visite.", "Il intègre également le développement d'un site vitrine afin d'informer 24/7, d'être contacté, d'analyser le flux de vos visites, ... et de faire un lien vers vos réseaux sociaux.")
-let section6 = new About ("Envol", "public/img/icon-envole.png", "Le pack Envol est destiné à accroître votre visibilité, clientèle et notoriété, tout en diminuant vos coûts et en garantissant le meilleur retour sur investissement.", "Il comporte un servie d'analyse de votre cible et des flux de vote trafic internet, afin d'utiliser les paramètres les plus adéquats pour la diffusion de vos campagnes.")
-
+let section2 = new About("Eclosion", "public/img/icon-eclosion.png", "Le pack Eclosion est parfait pour le début d'une activité.", "Il comprend la création de votre identité graphique, incluant votre logo et un support de prospection pour aller à la rencontre vos futurs clients, ainsi qu'un site internet single page pour avoir uneprésence en ligne.")
+let section4 = new About("Evolution", "public/img/icon-evolution.png", "Le pack Evolution vous propose une identité visuelle complète, comprenant la création de votre logo, de la charte graphique et de votre carte de visite.", "Il intègre également le développement d'un site vitrine afin d'informer 24/7, d'être contacté, d'analyser le flux de vos visites, ... et de faire un lien vers vos réseaux sociaux.")
+let section6 = new About("Envol", "public/img/icon-envole.png", "Le pack Envol est destiné à accroître votre visibilité, clientèle et notoriété, tout en diminuant vos coûts et en garantissant le meilleur retour sur investissement.", "Il comporte un servie d'analyse de votre cible et des flux de vote trafic internet, afin d'utiliser les paramètres les plus adéquats pour la diffusion de vos campagnes.")
 let about = [section2, section4, section6]
 
-let sectionsMain = document.querySelector("main").children
-let s=0
-for (i=1; i < 8; i+=2){
+let sectionsMain = document.querySelector("main").children // Toutes les sections de MAIN
+
+let s = 0
+for (i = 1; i < 8; i += 2) {
     sectionsMain[i].setAttribute("class", "my-5")
     let div0 = new createHtml("div", "class", "d-flex justify-content-center pb-4", sectionsMain[i])
 
@@ -128,12 +173,4 @@ for (i=1; i < 8; i+=2){
     p2.insertHtml(`${about[s]._text2}`)
 
     s++
-}
-
-// Footer
-let div1 = new createHtml("div", "", "", footer._type)
-let div2 = new createHtml("div", "", "", footer._type)
-
-for (let i = 0; i < 3; i++) {
-    let div = new createHtml("div", "", "", div1._type)
 }
