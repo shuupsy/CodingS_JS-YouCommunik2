@@ -16,7 +16,8 @@ class createHtml {
         this._type.remove
     }
 }
-
+let body = document.querySelector("body")
+body.setAttribute("style", "margin: 0 auto !important, width: 80%, box-shadow: 0px 0px 35px 1px rgb(172,172,172)")
 let header = new createHtml("header", "class", "bg-black text-light text-center h-auto", document.body)
 let main = new createHtml("main", "", "", document.body)
 let footer = new createHtml("footer", "class", "text-light container-fluid pt-5 px-5 text-center text-lg-start", document.body)
@@ -148,7 +149,7 @@ let envol = new Links(["public/img/icon-analyse-flux-web.png", "public/img/icon-
 let link = [eclosion, evolution, envol]
 let sectionsMain = document.querySelector("main").children // Toutes les sections de MAIN
 
-for (i = 2, a=0; i < 8; i += 2, a++) {
+for (i = 2, a = 0; i < 8; i += 2, a++) {
     // Pour chaque section (3,5,7)
     sectionsMain[i].setAttribute("class", "text-center d-flex flex-wrap h-auto justify-content-evenly pt-2")
     sectionsMain[i].style.backgroundColor = "#EAE3D6"
@@ -162,6 +163,11 @@ for (i = 2, a=0; i < 8; i += 2, a++) {
         p.insertHtml(`${link[a]._titre[d]}`)
     }
 }
+let extradiv = new createHtml("div", "class", "extra", sectionsMain[4])
+let imgL = new createHtml("img", "style", "width: 85px", extradiv._type)
+imgL.addAtr("src", `${link[1]._links[4]}`)
+let p = new createHtml("p", "class", "px-5 px-md-0", extradiv._type)
+p.insertHtml(`${link[1]._titre[4]}`)
 
 // Section 2, 4, 6
 class About {
